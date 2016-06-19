@@ -1,0 +1,26 @@
+//作り直す
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+</head>
+<body>
+<input type="button" value="open" onclick="win_open()">
+<input type="button" value="close" onclick="win_close()">
+
+<script>
+    var subwin;
+    
+    function win_open(){
+        subwin = window.open('http://www.google.com', 'google', 'width=600, height=480');
+    }
+    
+    function win_close(){
+        if(subwin && !subwin.closed){
+            subwin.close();
+        };
+    }
+</script>
+</body>
+</html>
