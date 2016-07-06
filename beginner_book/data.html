@@ -1,12 +1,36 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Untitled Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
+
 <body>
+    <div id="message" onclick="doChange();">click here</div>
+    <input type="text" id="text1">
+    <input type="button" onclick="doAction();" value="click">
 
 
 
+    <script>
+        function doAction() {
+            var arr = $('#message').data('messages');
+            if (arr == null) arr = new Array();
+            var str = $('#text1').val();
+            arr.push(str);
+            $('#message').data('messages', arr).data('counter', 0);
+        }
+
+        function doChange() {
+            var arr = $('#message').data('messages');
+            var counter = $('#message').data('counter');
+            counter++;
+            if (counter == arr.length) counter = 0;
+            $('#message').text(arr[counter]).data('counter', counter);
+        }
+    </script>
 </body>
+
 </html>
