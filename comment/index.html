@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="comment.js"></script>
+    <link rel="stylesheet" href="comment.css">
+    <style>
+        .nnc-comment-custom {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form id="comment" action="#">
+            <div id="screen" class="nnc-screen" style="width:400px;height:200px;background-color:whitesmoke;"></div>
+            <input id="message">
+        </form>
+    </div>
+
+    <script>
+        $(function () {
+            $('#comment').on('submit', function () {
+                var message = $('#message').val();
+                $('#message').val('');
+
+                $('#screen').comment(message);
+
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
