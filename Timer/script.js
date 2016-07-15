@@ -17,6 +17,11 @@
     start.addEventListener('click', function () {
         // time.innerHTML = min.value;
 
+        if (rest != 180) {
+            time.innerHTML = 180;
+            rest = 180;
+        }
+        start.disabled = true;
         var id = setInterval(function () {
             rest--;
             time.innerHTML = rest;
@@ -24,6 +29,7 @@
 
                 clearInterval(id);
                 alert('終了');
+                start.disabled = false;
             }
         }, 1000);
     });
