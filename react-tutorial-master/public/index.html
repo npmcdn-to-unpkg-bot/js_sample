@@ -19,7 +19,7 @@
     <!--    <script type="text/babel" src="scripts/example.js"></script>-->
     <script type="text/babel">
         var CommentBox = React.createClass({
-            loadCommentsFormServer: function(){
+            loadCommentsFromServer: function(){
                 $.ajax({
                     url: this.props.url,
                     dataType: 'json',
@@ -35,9 +35,9 @@
             getInitialState: function(){
                 return {data: []};
             },
-            commentDidMount: function(){
-                this.loadCommentsFormServer();
-                setInterval(this.loadCommentsFormServer, this.props.pollInterval);
+            componentDidMount: function(){
+                this.loadCommentsFromServer();
+                setInterval(this.loadCommentsFromServer, this.props.pollInterval);
             },
             render: function(){ 
                 return (
