@@ -12,7 +12,7 @@
 <body>
     <div id="root"></div>
    <script src="https://fb.me/react-0.13.3.js"></script>
-    <script>
+    <script type="text/babel">
         var Button = React.createClass({
   localHandleClick: function(){
     this.props.localHandleClick(this.props.increment);
@@ -20,7 +20,7 @@
   render: function(){
     return (
       <button onClick={this.localHandleClick}>+{this.props.increment}</button>
-    )
+    );
   }
 });
 
@@ -28,9 +28,9 @@ var Result = React.createClass({
   render: function(){
     return(
       <div>{this.props.localCounter}</div>
-    )
+    );
   }
-})
+});
 
 var Main = React.createClass({
   getInitialState: function(){
@@ -48,9 +48,9 @@ var Main = React.createClass({
         <Button localHandleClick={this.handleClick} increment={100} />
         <Result localCounter={this.state.counter} />
       </div>
-    )
+    );
   }
-})
+});
 
 React.render(<Main />, document.getElementById("root"));
     </script>
