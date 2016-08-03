@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${title}</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+    <style>${style}</style>
+</head>
+<body>
+    <app title='Hello, Riot.js'></app>
+    
+    <script type="riot/tag">
+        <app>
+            <h1>expressions</h1>
+            <ul>
+                <li>{name}</li>
+                <li>{title || 'no title'}</li>
+                <li>{frag ? 'ready' : 'loading'}</li>
+                <li>{new Date()}</li>
+            </ul>
+            
+            this.title = opts.title;
+            this.name = 'AAA';
+            this.frag = false;
+        </app>
+    </script>
+    <script>
+        riot.mount('*');
+    </script>
+</body>
+</html>
