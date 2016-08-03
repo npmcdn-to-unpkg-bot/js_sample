@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+</head>
+<body>
+    <app title='Hello, Riot.js'></app>
+    
+    <script type="riot/tag">
+        <app>
+            <h1>Event handlers</h1>
+
+            <button onclick='{click}'>click</button>
+            <ul>
+                <li each='{list}'>
+                    <button onclick='{clickItem}'>{name}</button>
+                </li>
+            </ul>
+
+            this.list=[
+                {name: 'hoge'},
+                {name: 'foo'},
+                {name: 'bar'},
+            ];
+
+            this.click = function(){
+                console.log('click');
+            };
+
+            this.clickItem = function(e){
+                console.log(e.item.name + 'was clicked');
+            };
+        </app>
+    </script>
+    <script>
+        riot.mount('*');
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+</head>
+<body>
+    <app title='Hello, Riot.js'></app>
+    
+    <script type="riot/tag">
+        <app>
+            <h1>expressions</h1>
+            <ul>
+                <li each='{list}' class='{done: done}'>{title}</li>
+            </ul>
+            
+            <style>
+                li.done{
+                    color:#aaa;
+                    text-decoration: line-through;
+                }
+            </style>
+            
+            this.list = [
+                {
+                    title: 'Hello, world!',
+                    done: false,
+                },
+                {
+                    title: '牛乳を買う',
+                    done: true,
+                },
+                {
+                    title: '豚肉を買う',
+                    done: false,
+                },
+            ];
+        </app>
+    </script>
+    <script>
+        riot.mount('*');
+    </script>
+</body>
+</html>

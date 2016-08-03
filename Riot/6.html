@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+</head>
+<body>
+    <app title='Hello, Riot.js'></app>
+    
+    <script type="riot/tag">
+        <app>
+            <h1>if/show/hide</h1>
+            
+            <button onclick='{toggle}'>click</button>
+            <div if='{visible}'> look </div>
+            <div show='{visible}'> show </div>
+            <div hide='{visible}'> hide </div>
+            
+            this.visible = true;
+            this.toggle = function(){
+                this.visible = !this.visible;
+            };
+        </app>
+    </script>
+    <script>
+        riot.mount('*');
+    </script>
+</body>
+</html>
