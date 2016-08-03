@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+</head>
+<body>
+   <h1>aaaaaa</h1>
+    <app title='Hello, Riot.js'></app>
+    
+    <script type="riot/tag">
+        <app>
+            <h1>{title}</h1>
+            <style scoped>
+                :scope h1{
+                    color:red;
+                }
+            </style>
+            this.title = opts.title;
+        </app>
+    </script>
+    <script>
+        riot.mount('*');
+    </script>
+</body>
+</html>
