@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>
+</head>
+<body>
+    <div id="demo">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ul>
+    </div>
+    <div id="event">
+        <p>{{message}}</p>
+        <button v-on:click="showMessage">alert</button>
+    </div>
+    <div id="todo">
+        <input v-model="input" v-on:keyup.enter="add">
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{todo.text}}</span>
+                <button v-on:click="remove($index)">x</button>
+            </li>
+        </ul>
+    </div>
+    <div id="com">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    
+    <script>
+        window.onload = function(){
+            var demo = new Vue({
+                el: '#demo',
+                data: {
+                    message: 'Hello, Vue.js!'
+                }
+            });
+            new Vue({
+                el: '#app',
+                data: {
+                    todos: [
+                        {text: 'Learn Javascript'},
+                        {text: 'Learn Vue.js'},
+                        {text: 'Build Something Awesome'}
+                    ]
+                }
+            });
+            new Vue({
+                el: '#event',
+                data:{
+                    message: 'Hello Vue.js!'
+                },
+                methods: {
+                    showMessage: function(){
+                        alert(this.message);
+                    }
+                }
+            });
+            new Vue({
+                el: '#todo',
+                data: {
+                    input: '',
+                    todos: [
+                        {text: 'Add some todos'}
+                    ]
+                },
+                methods: {
+                    add: function(){
+                        var text = this.input.trim();
+                        if(text){
+                            this.todos.push({text: text});
+                            this.input = '';
+                        }
+                    },
+                    remove: function(index){
+                        this.todos.splice(index, 1);
+                    }
+                }
+            });
+            var Child = Vue.extend({
+                template: '<div>A custom component!</div>'
+            });
+            
+            new Vue({
+                el: '#com',
+                components: {
+                    'my-component': Child,
+                }
+            });
+        };
+    </script>
+</body>
+</html>
